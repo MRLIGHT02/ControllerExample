@@ -2,12 +2,15 @@
 
 namespace ControllerExample.Controllers
 {
-    public class HomeController
+
+    public class HomeController : Controller
     {
         [Route("hello")]
-        public string Method1()
+        [Route("/")]
+        public ContentResult Index()
         {
-            return "Hello From Controller";
+            //return new ContentResult() { Content = "Hello From Content Type Result", ContentType = "text/plain" };
+            return Content("Hello From Controller", "text/plain");
         }
         [Route(@"contact/num/{number:regex(^\d{{10}}$)}")]
         public string Contact()
